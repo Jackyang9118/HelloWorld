@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOP组装行为分析面板</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header class="topbar panel">
+        <div class="left-info">
+          <span>项目: <b>组装灯</b></span>
+          <button class="select-btn" id="selectBtn">⮑ 选择工位</button>
+          <span>作业员: <b id="operatorName">张三</b></span>
+        </div>
+        <div class="right-info">
+          <span>模式: 常规顺序</span>
+          <span>状态: <b class="running" id="statusText">运行</b></span>
+          <span>耗时: <b id="elapsedText">00:40</b></span>
+          <span>结果: <b id="resultText">--</b></span>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="video-area panel">
+          <div class="video-mock">
+            <div class="skeleton hand"></div>
+            <div class="skeleton tool"></div>
+            <div class="detect-box"></div>
+            <div class="floating-tag">动作: 螺钉1</div>
+            <h1>SOP组装行为分析</h1>
+          </div>
+          <div class="step-cards" id="stepCards"></div>
+        </section>
+
+        <aside class="right-area">
+          <div class="quality panel">
+            <div class="ring">
+              <div class="ring-inner">
+                <p class="percent" id="yieldPercent">25.00%</p>
+                <p>良率</p>
+              </div>
+            </div>
+            <div class="kpis">
+              <div><strong id="detected">4</strong><span>检测数量</span></div>
+              <div><strong id="good">1</strong><span>良品数</span></div>
+              <div><strong id="actionNg" class="ng">0</strong><span class="ng">动作不良</span></div>
+              <div><strong id="prodNg" class="ng">3</strong><span class="ng">产品不良</span></div>
+            </div>
+          </div>
+
+          <div class="table panel">
+            <h3>步骤执行</h3>
+            <table>
+              <thead>
+                <tr><th>No</th><th>步骤</th><th>结果</th><th>用时(s)</th></tr>
+              </thead>
+              <tbody id="runtimeRows"></tbody>
+            </table>
+            <div class="progress-wrap">
+              <div class="progress" id="runtimeProgress"></div>
+            </div>
+          </div>
+
+          <div class="table panel">
+            <h3>步骤统计: CT(s) <span id="ct">0.0</span></h3>
+            <table>
+              <thead>
+                <tr><th>No</th><th>步骤</th><th>OK数</th><th>NG数</th><th>不良率</th><th>PT</th></tr>
+              </thead>
+              <tbody id="statRows"></tbody>
+            </table>
+          </div>
+
+          <div class="controls panel">
+            <button class="start" id="startBtn">开始</button>
+            <button class="stop" id="stopBtn">停止</button>
+            <button class="wait" id="pauseBtn">待机</button>
+            <button class="clear" id="resetBtn">清零</button>
+            <span>持续运行: <b id="runningTime">00:00:00</b></span>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="footer panel" id="footerText">
+        相机: ● | 帧率: 15 fps | 速度: 59 ms | 图像: 1920*1080 | 测试ID: 7 | 动作: 螺钉1
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
